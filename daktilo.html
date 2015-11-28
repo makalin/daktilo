@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Daktilo</title>
+	<meta name="author" content="mehmet t. akalin">
+
+   	<link href='http://fonts.googleapis.com/css?family=Orbitron:regular,500,900' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+
+	<link href="css/style.css" rel="stylesheet" type="text/css"  />
+    <link rel="stylesheet" type="text/css" href="css/flashblock.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/soundmanager2.js"></script>
+	<script type="text/javascript">
+	
+	// flash version URL switch (for this demo page)
+		var winLoc = window.location.toString();
+
+		if (winLoc.match(/flash9/i)) {
+		  soundManager.flashVersion = 9;
+		  if (winLoc.match(/highperformance/i)) {
+			soundManager.useHighPerformance = true;
+			soundManager.useFastPolling = true;
+		  }
+		} else if (winLoc.match(/flash8/i)) {
+		  soundManager.flashVersion = 8;
+			}
+
+			soundManager.useFlashBlock = true;
+			soundManager.url = 'swf/'; // path to SoundManager2 SWF files (note trailing slash)
+			soundManager.debugMode = false;
+			soundManager.consoleOnly = false;
+			soundManager.onready(function(oStatus) {
+ 				 if (!oStatus.success) {
+				    return false;	
+				  }
+			  // soundManager is initialised, ready to use. Create a sound for this demo page.
+/*  			 	if (soundManager.flashVersion > 8) {
+		    	t = window.setInterval(checkRAM,500);
+			    document.getElementById('flash-ram-use').style.display = 'inline';
+				alert(document.getElementById('flash-ram-use').innerHTML)
+			    checkRAM();
+			  	}*/
+				 soundManager.createSound({
+				    id: 'mySound2',
+				    url: 'sound/typewriter_key_4.mp3'
+				});
+				soundManager.createSound({
+					id: 'mySound3',
+				    url: 'sound/typewriter_line_break.mp3'
+  				});
+			    soundManager.createSound({
+				    id: 'mySound5',
+			    	url: 'sound/typewriter-paper-1.mp3'
+				});
+
+			});
+
+/*function checkRAM() {
+  if (soundManager.supported()) {
+	var ram = (soundManager.getMemoryUse()/1024/1024).toFixed(2);
+    if (!isNaN(ram)) {
+      document.getElementById('flash-ram-use').innerHTML = ram+' MB';
+    } else {
+	  document.getElementById('flash-ram-use').style.display = 'none';
+    }
+  }
+}
+
+var t = null;
+
+function doEval(sHTML) {
+  var html = sHTML.replace(/\<(span|code)\>/gi,'');
+  html = html.replace(/\<[\/](span|code)\>/gi,'');
+  html = html.replace(/&gt;/gi,'>');
+  eval(html);
+  return false;
+}*/
+
+
+
+function toggleFullScreen() {
+       if (!document.fullscreenElement &&    // alternative standard method
+        !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
+         if (document.documentElement.requestFullscreen) {
+           document.documentElement.requestFullscreen();
+         } else if (document.documentElement.mozRequestFullScreen) {
+           document.documentElement.mozRequestFullScreen();
+         } else if (document.documentElement.webkitRequestFullscreen) {
+           document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+         }
+       } else {
+          if (document.cancelFullScreen) {
+             document.cancelFullScreen();
+          } else if (document.mozCancelFullScreen) {
+             document.mozCancelFullScreen();
+          } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+          }
+       }
+     }
+
+</script>
+ 	
+<script type="text/javascript" src="js/keyboard.js"></script> 
+
+</head>
+<body>
+<div id="container">
+	
+<div id="ustsol">
+	<ul class="icons buton">
+		<li class="info"><a href="http://animadverto.com" target='_blank'><strong>Daktilo</strong></a></li>
+	</ul>
+</div>
+
+<div id="ustsag">
+	<ul class="icons buton">
+		<li class="help"><a href="#"><strong>Yardım</strong></a></li>
+		<li class="share"><a href="#"><strong>Paylaş</strong></a></li>
+		<li class="fullscr"><a href="#" onclick="toggleFullScreen(); return false;"><strong>Ekran</strong></a></li>
+	</ul>
+</div>
+
+
+<div id="typewritter"></div>
+
+	<textarea id="write"  wrap="virtual" autocomplete="off"  ></textarea>
+
+	<ul id="keyboard">
+		<li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+		<li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+		<li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+		<li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+		<li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+		<li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+		<li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+		<li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+		<li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+		<li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+		<li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+		<li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+		<li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+		<li class="delete lastitem">delete</li>
+		<li class="tab">tab</li>
+		<li class="letter">q</li>
+		<li class="letter">w</li>
+		<li class="letter">e</li>
+		<li class="letter">r</li>
+		<li class="letter">t</li>
+		<li class="letter">y</li>
+		<li class="letter">u</li>
+		<li class="letter">i</li>
+		<li class="letter">o</li>
+		<li class="letter">p</li>
+		<li class="symbol"><span class="off">[</span><span class="on">{</span></li>
+		<li class="symbol"><span class="off">]</span><span class="on">}</span></li>
+		<li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
+		<li class="capslock">caps lock</li>
+		<li class="letter">a</li>
+		<li class="letter">s</li>
+		<li class="letter">d</li>
+		<li class="letter">f</li>
+		<li class="letter">g</li>
+		<li class="letter">h</li>
+		<li class="letter">j</li>
+		<li class="letter">k</li>
+		<li class="letter">l</li>
+		<li class="symbol"><span class="off">;</span><span class="on">:</span></li>
+		<li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+		<li class="return lastitem">return</li>
+		<li class="left-shift">shift</li>
+		<li class="letter">z</li>
+		<li class="letter">x</li>
+		<li class="letter">c</li>
+		<li class="letter">v</li>
+		<li class="letter">b</li>
+		<li class="letter">n</li>
+		<li class="letter">m</li>
+		<li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+		<li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+		<li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+		<li class="right-shift lastitem">shift</li>
+		<li class="space lastitem">&nbsp;</li>
+        <li id="send" class="send"><span>clear</span></li>
+	</ul>
+    <!--boton enviar -->
+</div>
+</body>
+</html>
